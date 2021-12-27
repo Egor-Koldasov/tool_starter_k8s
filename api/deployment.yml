@@ -31,5 +31,5 @@ spec:
               port: 4000
             initialDelaySeconds: 0
             periodSeconds: 1
-            failureThreshold: 10
+            failureThreshold: 120
 
