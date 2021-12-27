@@ -19,7 +19,17 @@ spec:
           image: localhost:5000/tool_starter_api:latest
           imagePullPolicy: Always
           livenessProbe:
-            exec:
-              command:
-              - curl localhost:4000
+            httpGet:
+              path: /healthz
+              port: 4000
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            failureThreshold: 1
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 4000
+            initialDelaySeconds: 0
+            periodSeconds: 1
+            failureThreshold: 10
 
