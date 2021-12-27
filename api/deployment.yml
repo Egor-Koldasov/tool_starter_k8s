@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tool-starter-api
+  labels:
+    app: tool-starter-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tool-starter-api
+  template:
+    metadata:
+      labels:
+        app: tool-starter-api
+    spec:
+      containers:
+        - name: tool-starter-api
+          image: localhost:5000/tool_starter_api:latest
+          imagePullPolicy: Always
+          livenessProbe:
+            exec:
+              command:
+              - curl localhost:4000
+
